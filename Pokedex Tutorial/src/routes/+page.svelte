@@ -1,29 +1,12 @@
 <script lang="ts">
-  /*   const greeting = "Hello";
-  const name = "world"; */
-
-  // ----------------------------------------------------------------
-  // with object
-  // ----------------------------------------------------------------
-
-  // const greetingObj = {
-  //   greeting: "Hello",
-  //   name: "world",
-  // };
-
-  // const data = ["yellow", "red", "blue"];
-
+  import type { PageData } from "./$types";
   import { generations } from "./generations";
+  export let data: PageData;
 </script>
 
-<!-- <h1>{greetingObj.greeting} to {greetingObj.name}</h1> -->
-
-<!-- {#each data as color, i (color)}
-  <div>
-    {i + 1}: {color},
-  </div>
+{#each data.monsters as monster (monster.id)}
+  <p>{monster.id}: {monster.name}</p>
 {/each}
- -->
 
 {#each generations as generation (generation.id)}
   <h1>{generation.name}</h1>
