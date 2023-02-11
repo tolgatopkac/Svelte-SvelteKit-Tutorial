@@ -1,12 +1,23 @@
 <script>
-  import Header from "./components/Header.svelte";
-  import Welcome from "./components/Welcome.svelte";
-  import Footer from "./components/Footer.svelte";
+  import Tabela from "./Tabela.svelte";
+
+  let sayi = 0;
+
+  const arttir = () => {
+    sayi++;
+  };
+
+  const azalt = () => {
+    sayi--;
+  };
 </script>
 
-<Header />
-<Welcome />
-<Footer />
+<Tabela {sayi} />
+<Tabela />
+
+<button on:click={arttir}>Arttır</button>
+
+<button on:click={azalt}>Azalt</button>
 
 <style>
 </style>
