@@ -4,6 +4,7 @@
 	export let shadow = false;
 	export let bgColor = 'inherit';
 	export let textColor = 'inherit';
+	export let disabled = false;
 
 	let isLeftHovered;
 </script>
@@ -11,6 +12,8 @@
 <!-- style="background-color:{bgColor}; color:{textColor}" -->
 
 <button
+	on:click
+	{disabled}
 	style:--buttonBgColor={bgColor}
 	style:--buttonTextColor={textColor}
 	class:size-lg={size === 'large'}

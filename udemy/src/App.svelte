@@ -12,7 +12,15 @@
 <!-- <Button title="Props" /> -->
 <!-- PROPS -->
 <div>
-	<Button let:isLeftHovered size="large" shadow>
+	<Button
+		on:click|once={(event) => {
+			alert(true);
+		}}
+		let:isLeftHovered
+		size="large"
+		shadow
+		disabled
+	>
 		<div style:width="20px" slot="leftContent">
 			{#if isLeftHovered}
 				<FaAdn />
