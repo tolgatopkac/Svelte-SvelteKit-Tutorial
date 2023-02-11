@@ -1,5 +1,6 @@
 <script>
 	import Button from './lib/Button.svelte';
+	import FaAdn from 'svelte-icons/fa/FaAdn.svelte';
 </script>
 
 <!-- Slot -->
@@ -10,12 +11,13 @@
 <!-- <Button title="Props" /> -->
 <!-- PROPS -->
 <div>
-	<Button size="large" shadow bgColor="red" textColor="blue">Button Text</Button>
+	<Button size="large" shadow>
+		<div style:width="20px" slot="leftContent">
+			<FaAdn />
+		</div>
+		Button Text</Button
+	>
 </div>
 
 <style>
-	div {
-		display: flex;
-		flex-direction: column;
-	}
 </style>
