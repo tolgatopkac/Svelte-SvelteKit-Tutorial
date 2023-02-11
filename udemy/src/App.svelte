@@ -1,6 +1,7 @@
 <script>
 	import Button from './lib/Button.svelte';
 	import FaAdn from 'svelte-icons/fa/FaAdn.svelte';
+	import FaAdversal from 'svelte-icons/fa/FaAdversal.svelte';
 </script>
 
 <!-- Slot -->
@@ -11,12 +12,16 @@
 <!-- <Button title="Props" /> -->
 <!-- PROPS -->
 <div>
-	<Button size="large" shadow>
+	<Button let:isLeftHovered size="large" shadow>
 		<div style:width="20px" slot="leftContent">
-			<FaAdn />
+			{#if isLeftHovered}
+				<FaAdn />
+			{:else}
+				<FaAdversal />
+			{/if}
 		</div>
-		Button Text</Button
-	>
+		Button Text
+	</Button>
 </div>
 
 <style>
