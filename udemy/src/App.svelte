@@ -10,11 +10,7 @@
 <!-- <Button title="Props" /> -->
 <!-- PROPS -->
 <div>
-	<Button size="large" shadow>Button Text</Button>
-
-	<Button size="small" shadow>Button Text</Button>
-
-	<Button />
+	<Button size="large" shadow bgColor="red" textColor="blue">Button Text</Button>
 </div>
 
 <style>

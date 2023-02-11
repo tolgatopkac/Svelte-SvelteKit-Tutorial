@@ -2,27 +2,28 @@
 	import { children } from 'svelte/internal';
 	export let size = 'small';
 	export let shadow = false;
+	export let bgColor = 'inherit';
+	export let textColor = 'inherit';
 </script>
 
-<!-- Slot -->
-<!-- <button><slot /></button> -->
-<!-- slot -->
-<button class={size === 'large' ? 'size-lg' : 'size-sm'}><slot>Fallback</slot></button>
+<!-- style="background-color:{bgColor}; color:{textColor}" -->
 
-<button class:size-lg={size === 'large'} class:size-sm={size === 'small'} class:shadow
-	><slot>Fallback</slot></button
+<button
+	style:--buttonBgColor={bgColor}
+	style:--buttonTextColor={textColor}
+	class:size-lg={size === 'large'}
+	class:size-sm={size === 'small'}
+	class:shadow
 >
+	<slot>Fallback</slot>
+</button>
 
-<!-- Props -->
-<!-- <button>{title}</button> -->
-
-<!-- Props -->
 <style lang="scss">
 	@use '../styles/variables.scss';
 	button {
 		border: none;
-		background-color: #ff3e00;
-		color: #fff;
+		background-color: var(--buttonBgColor);
+		color: var(--buttonTextColor);
 
 		font-weight: bold;
 		border-radius: 5px;
