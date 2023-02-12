@@ -1,15 +1,16 @@
 <script>
-  import Card from "./Card.svelte";
-
-  const cardBilgi = {
-    urun: "Kulaklik",
-    fiyat: "56",
-    aciklama: "Uygun bir kulaklık",
-    satici: "a sahsi",
+  let sayi = 0;
+  $: click = sayi;
+  const handleClick = () => {
+    sayi++;
   };
 </script>
 
-<Card {...cardBilgi} />
+<button on:click={handleClick}>
+  {sayi} kez tiklandi
+</button>
+
+<p>{click}</p>
 
 <style>
 </style>
