@@ -1,23 +1,15 @@
 <script>
-  import Tabela from "./Tabela.svelte";
+  import Card from "./Card.svelte";
 
-  let sayi = 0;
-
-  const arttir = () => {
-    sayi++;
-  };
-
-  const azalt = () => {
-    sayi--;
+  const cardBilgi = {
+    urun: "Kulaklik",
+    fiyat: "56",
+    aciklama: "Uygun bir kulaklık",
+    satici: "a sahsi",
   };
 </script>
 
-<Tabela {sayi} />
-<Tabela />
-
-<button on:click={arttir}>Arttır</button>
-
-<button on:click={azalt}>Azalt</button>
+<Card {...cardBilgi} />
 
 <style>
 </style>
