@@ -1,20 +1,17 @@
 <script>
-  import Card from "./Card.svelte";
-  import NamedCard from "./NamedCard.svelte";
+  import { onMount } from "svelte";
+  let datas = [];
+
+  onMount(async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+    datas = await res.json();
+  });
 </script>
 
 <div>
-  <Card>Merhaba</Card>
-
-  <Card>
-    <button>Tıkla</button>
-  </Card>
-  <div>
-    <NamedCard>
-      <span slot="isim">Tolga</span>
-      <span slot="adres">kocaeli</span>
-    </NamedCard>
-  </div>
+  {#each datas as item (item.id)}
+    <p>{item.title}</p>
+  {/each}
 </div>
 
 <style>
