@@ -1,33 +1,34 @@
 <script>
-  // EVENTS - INLINE EVENTS
-  /*   let konum = { x: 0, y: 0 };
-  const handleClick = (event) => {
-    // console.log(event);
-    konum.x = event.clientX;
-    konum.y = event.clientY;
-  }; */
-  // ----------------------------------------------------------------
+  import Header from "./Header.svelte";
 
-  // Event Modifiers
-  const handleClick = () => {
-    alert("merhaba");
+  let mode = "light";
+
+  const changeMode = (event) => {
+    if (mode === "light") {
+      mode = event.detail.yeniMode;
+    } else {
+      mode = "light";
+    }
   };
 </script>
 
-<!--    EVENTS - INLINE EVENTS
-<div on:mousemove={handleClick}>
-  <h1>x: {konum.x}</h1>
-  <h1>y: {konum.y}</h1>
+<div class={mode === "light" ? "light" : "dark"}>
+  <Header on:mode={changeMode} />
 </div>
-   ---------------------------------------------------------------- -->
-
-<!-- EVENT MODIFIERS -->
-<button on:click|once={handleClick}>Tıkla</button>
-
-<form on:submit|preventDefault>
-  <input type="text" name="name" value="name" id="name" />
-  <button type="submit">Submit</button>
-</form>
 
 <style>
+  div {
+    width: 100%;
+    height: 100vh;
+    /* background-color: ; */
+  }
+  .light {
+    background-color: #fff;
+    color: black;
+  }
+
+  .dark {
+    background-color: black;
+    color: #fff;
+  }
 </style>
