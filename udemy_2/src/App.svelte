@@ -1,19 +1,48 @@
 <script>
-  import Modal from "./Modal.svelte";
-  let isModalOpen = false;
+  let name = "Tolga";
+  let isCompleted = false;
 
-  const openModal = () => {
-    isModalOpen = true;
-  };
+  let menu = ["tatli", "kurabiye", "pasta"];
+  let siparisler = [];
 
-  const closeModal = () => {
-    isModalOpen = false;
-  };
+  //
+  let text = "";
 </script>
 
-<button on:click={openModal}>Open Modal</button>
+<!-- INPUT -->
+<input type="text" bind:value={name} />
+<h1>{name}</h1>
 
-<Modal {isModalOpen} on:click={closeModal} />
+<!-- CHECKBOX -->
+<label for="market">
+  <input id="market" type="checkbox" bind:checked={isCompleted} />
+  <span class={isCompleted ? "done" : ""}>Markete git</span>
+</label>
 
+<!-- BIND GROUP -->
+<h1>Menu</h1>
+
+{#each menu as item}
+  <label for={item} />
+  <input type="checkbox" name="item" value={item} bind:group={siparisler} />
+  {item}
+{/each}
+
+<h2>Siparisler</h2>
+{#each siparisler as siparis (siparis)}
+  <li>{siparis}</li>
+{:else}
+  <h4>Siparis Yok</h4>
+{/each}
+<!--  -->
+
+<!-- text area -->
+<textarea bind:value={text} />
+<p>{text}</p>
+
+<!-- bind select -->
 <style>
+  .done {
+    text-decoration: line-through;
+  }
 </style>
