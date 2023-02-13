@@ -1,12 +1,19 @@
 <script>
-  import Outer from "./Outer.svelte";
+  import Modal from "./Modal.svelte";
+  let isModalOpen = false;
 
-  const handleClick = (event) => {
-    alert(event.detail.text);
+  const openModal = () => {
+    isModalOpen = true;
+  };
+
+  const closeModal = () => {
+    isModalOpen = false;
   };
 </script>
 
-<Outer on:msg={handleClick} />
+<button on:click={openModal}>Open Modal</button>
+
+<Modal {isModalOpen} on:click={closeModal} />
 
 <style>
 </style>
