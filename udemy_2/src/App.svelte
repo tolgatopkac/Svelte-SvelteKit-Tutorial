@@ -1,32 +1,48 @@
 <script>
-  import Header from "./Header.svelte";
-  import { products, sepet } from "./store";
+  let tab = "mListesi";
+  let mListesi = ["elma", "portakal", "kiraz"];
+  let sListesi = ["havuç", "ispanak", "lahana"];
 
-  const sepeteEkle = (id) => {
-    products.update((currentProducts) => {
-      let kopyaProducts = [...currentProducts];
-      let updatedProduct = kopyaProducts.find((product) => product.id == id);
-      if (updatedProduct.adet > 0) {
-        updatedProduct.adet--;
-        sepet.update((value) => value + 1);
-      }
-      return kopyaProducts;
-    });
-  };
+  let isim = true;
 </script>
 
-<Header />
+<span class:isim>Tolga</span>
 
-{#each $products as product (product.id)}
-  <div>
-    <h3>{product.title}</h3>
-    <span>Stok : {product.adet}</span>
-    <button disabled={!product.adet} on:click={() => sepeteEkle(product.id)}
-      >Sepete Ekle</button
-    >
-    <hr />
-  </div>
-{/each}
+<div>
+  <span class:selected={tab === "mListesi"} on:click={() => (tab = "mListesi")}
+    >Meyve Listesi</span
+  >
+  <span class:selected={tab === "sListesi"} on:click={() => (tab = "sListesi")}
+    >Sebze Listesi</span
+  >
+</div>
+
+{#if tab === "mListesi"}
+  {#each mListesi as item}
+    <li>{item}</li>
+  {/each}
+{:else}
+  {#each sListesi as item}
+    <li>{item}</li>
+  {/each}
+{/if}
 
 <style>
+  div {
+    display: flex;
+    padding: 40px;
+    justify-content: space-between;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .selected {
+    border-bottom: 2px solid orange;
+  }
+
+  .isim {
+    background-color: blue;
+  }
 </style>
