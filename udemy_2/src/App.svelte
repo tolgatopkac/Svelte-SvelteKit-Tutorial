@@ -1,48 +1,55 @@
 <script>
-  let name = "Tolga";
-  let isCompleted = false;
+  let sorular = [
+    { id: 1, text: "sevdiğiniz kitap ?" },
+    { id: 2, text: "sevdiğiniz takım ?" },
+    { id: 3, text: "sevdiğiniz renk ?" },
+  ];
 
-  let menu = ["tatli", "kurabiye", "pasta"];
-  let siparisler = [];
+  let secilenSoru;
+  let cevap = "";
 
-  //
-  let text = "";
+  let tablo = [];
+  const handleSubmit = (e) => {
+    tablo = [
+      {
+        tabloSoru: secilenSoru,
+        tabloCevap: cevap,
+      },
+      ...tablo,
+    ];
+
+    cevap = "";
+  };
 </script>
 
-<!-- INPUT -->
-<input type="text" bind:value={name} />
-<h1>{name}</h1>
+<form on:submit|preventDefault={handleSubmit}>
+  <select bind:value={secilenSoru}>
+    {#each sorular as soru (soru.id)}
+      <option value={soru.text}> {soru.text}</option>
+    {/each}
+  </select>
+  <input type="text" bind:value={cevap} />
+  <button type="submit">Submit</button>
+</form>
 
-<!-- CHECKBOX -->
-<label for="market">
-  <input id="market" type="checkbox" bind:checked={isCompleted} />
-  <span class={isCompleted ? "done" : ""}>Markete git</span>
-</label>
+<table>
+  <tr>
+    <th>Soru</th>
+    <th>Cevap</th>
+  </tr>
 
-<!-- BIND GROUP -->
-<h1>Menu</h1>
+  {#each tablo as item (item)}
+    <tr>
+      <td>{item.tabloSoru}</td>
+      <td>{item.tabloCevap}</td>
+    </tr>
+  {/each}
+</table>
 
-{#each menu as item}
-  <label for={item} />
-  <input type="checkbox" name="item" value={item} bind:group={siparisler} />
-  {item}
-{/each}
-
-<h2>Siparisler</h2>
-{#each siparisler as siparis (siparis)}
-  <li>{siparis}</li>
-{:else}
-  <h4>Siparis Yok</h4>
-{/each}
-<!--  -->
-
-<!-- text area -->
-<textarea bind:value={text} />
-<p>{text}</p>
-
-<!-- bind select -->
 <style>
-  .done {
-    text-decoration: line-through;
+  table,
+  th,
+  td {
+    border: 1px solid;
   }
 </style>
