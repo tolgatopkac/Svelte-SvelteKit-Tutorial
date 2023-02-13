@@ -1,48 +1,21 @@
 <script>
-  let tab = "mListesi";
-  let mListesi = ["elma", "portakal", "kiraz"];
-  let sListesi = ["havuç", "ispanak", "lahana"];
-
-  let isim = true;
+  import Card from "./Card.svelte";
+  import NamedCard from "./NamedCard.svelte";
 </script>
 
-<span class:isim>Tolga</span>
-
 <div>
-  <span class:selected={tab === "mListesi"} on:click={() => (tab = "mListesi")}
-    >Meyve Listesi</span
-  >
-  <span class:selected={tab === "sListesi"} on:click={() => (tab = "sListesi")}
-    >Sebze Listesi</span
-  >
+  <Card>Merhaba</Card>
+
+  <Card>
+    <button>Tıkla</button>
+  </Card>
+  <div>
+    <NamedCard>
+      <span slot="isim">Tolga</span>
+      <span slot="adres">kocaeli</span>
+    </NamedCard>
+  </div>
 </div>
 
-{#if tab === "mListesi"}
-  {#each mListesi as item}
-    <li>{item}</li>
-  {/each}
-{:else}
-  {#each sListesi as item}
-    <li>{item}</li>
-  {/each}
-{/if}
-
 <style>
-  div {
-    display: flex;
-    padding: 40px;
-    justify-content: space-between;
-  }
-
-  span {
-    cursor: pointer;
-  }
-
-  .selected {
-    border-bottom: 2px solid orange;
-  }
-
-  .isim {
-    background-color: blue;
-  }
 </style>
