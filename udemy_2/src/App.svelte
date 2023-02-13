@@ -1,62 +1,33 @@
 <script>
-  import Card from "./Card.svelte";
+  // EVENTS - INLINE EVENTS
+  /*   let konum = { x: 0, y: 0 };
+  const handleClick = (event) => {
+    // console.log(event);
+    konum.x = event.clientX;
+    konum.y = event.clientY;
+  }; */
+  // ----------------------------------------------------------------
 
-  // --------------------------------
-  let user = false;
-
-  const toggle = () => {
-    user = !user;
-  };
-  // ----------------------------------
-
-  let object = [
-    {
-      id: 1,
-      isim: "A",
-      yazar: "B",
-    },
-    {
-      id: 2,
-      isim: "C",
-      yazar: "D",
-    },
-    {
-      id: 3,
-      isim: "E",
-      yazar: "F",
-    },
-  ];
-
+  // Event Modifiers
   const handleClick = () => {
-    object = object.slice(1);
+    alert("merhaba");
   };
 </script>
 
-<!--IF ELSE -->
-{#if !user}
-  <button on:click={toggle}>Login</button>
-{:else}
-  <button on:click={toggle}>Logout</button>
-{/if}
-<!--IF ELSE  -->
+<!--    EVENTS - INLINE EVENTS
+<div on:mousemove={handleClick}>
+  <h1>x: {konum.x}</h1>
+  <h1>y: {konum.y}</h1>
+</div>
+   ---------------------------------------------------------------- -->
 
-<!-- Each -->
-{#each object as kitap (kitap.id)}
-  <!-- {#each object as isim (isim.id)} -->
+<!-- EVENT MODIFIERS -->
+<button on:click|once={handleClick}>Tıkla</button>
 
-  <Card {...kitap} />
-{:else}
-  <div>Kitap kalmadı</div>
-
-  <!-- <Card isim={kitap.isim} yazar={kitap.yazar} /> -->
-
-  <!-- 
-    <div>
-      <h4>{isim}</h4>
-      <h4>{yazar}</h4>
-    </div> -->
-{/each}
-<button on:click={handleClick}> En baştan kaldır </button>
+<form on:submit|preventDefault>
+  <input type="text" name="name" value="name" id="name" />
+  <button type="submit">Submit</button>
+</form>
 
 <style>
 </style>
