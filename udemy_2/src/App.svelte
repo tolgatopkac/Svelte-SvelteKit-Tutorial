@@ -1,34 +1,12 @@
 <script>
-  import Header from "./Header.svelte";
+  import Outer from "./Outer.svelte";
 
-  let mode = "light";
-
-  const changeMode = (event) => {
-    if (mode === "light") {
-      mode = event.detail.yeniMode;
-    } else {
-      mode = "light";
-    }
+  const handleClick = (event) => {
+    alert(event.detail.text);
   };
 </script>
 
-<div class={mode === "light" ? "light" : "dark"}>
-  <Header on:mode={changeMode} />
-</div>
+<Outer on:msg={handleClick} />
 
 <style>
-  div {
-    width: 100%;
-    height: 100vh;
-    /* background-color: ; */
-  }
-  .light {
-    background-color: #fff;
-    color: black;
-  }
-
-  .dark {
-    background-color: black;
-    color: #fff;
-  }
 </style>
